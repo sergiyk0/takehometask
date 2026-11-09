@@ -11,10 +11,8 @@
     ],
   },
   "files": [
-    { "path": "README.md" },
     { "kind": "folder", "path": "TakeHome Exrcise", "target-membership": [ "TakeHome Exrcise" ] },
     { "kind": "folder", "path": "TakeHome ExrciseTests", "target-membership": [ "TakeHome ExrciseTests" ] },
-    { "kind": "folder", "path": "TakeHome ExrciseUITests", "target-membership": [ "TakeHome ExrciseUITests" ] },
     {
       "kind": "group",
       "name": "Products",
