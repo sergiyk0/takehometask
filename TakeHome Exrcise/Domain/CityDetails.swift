@@ -14,4 +14,5 @@ struct CityDetails: Identifiable, Equatable {
     var surfingLikelihoods: [Float]
     var outdoorSightseeingLikelihoods: [Float]
     var indoorSightseeingLikelihoods: [Float]
+    var dates: [Date]
 }

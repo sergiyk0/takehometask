@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CitiesSearchView: View {
     @ObservedObject var viewModel = CitiesSearchViewModel()
-    let onSelect: (City) -> Void
     
     var body: some View {
         List {
@@ -30,17 +29,14 @@ struct CitiesSearchView: View {
                     Text("No cities found.").foregroundStyle(.secondary)
                 }
                 ForEach(viewModel.searchResults) { city in
-                    Button {
-                        onSelect(city)
+                    NavigationLink() {
+                        CityDetailsView(city: city)
                     } label: {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text(city.name).font(.headline)
-                            Text([city.admin1, city.country].compactMap { $0 }.joined(separator: ", "))
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                        }
+                        Text(city.name).font(.headline)
+                        Text([city.admin1, city.country].compactMap { $0 }.joined(separator: ", "))
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
                     }
-                    .buttonStyle(.plain)
                 }
             }
         }

@@ -20,26 +20,13 @@ enum OpenMeteoEndpoint {
         )
     }
 
-    static let currentVariables = [
-        "temperature_2m", "relative_humidity_2m", "apparent_temperature", "is_day",
-        "precipitation", "rain", "showers", "snowfall", "weather_code", "cloud_cover",
-        "pressure_msl", "surface_pressure", "wind_speed_10m", "wind_direction_10m", "wind_gusts_10m"
-    ]
-
     static let hourlyVariables = [
-        "temperature_2m", "relative_humidity_2m", "dew_point_2m", "apparent_temperature",
-        "precipitation_probability", "precipitation", "rain", "showers", "snowfall", "snow_depth",
-        "weather_code", "pressure_msl", "surface_pressure", "cloud_cover", "visibility",
-        "wind_speed_10m", "wind_direction_10m", "wind_gusts_10m", "uv_index", "is_day"
+        "temperature_2m", "snow_depth", "visibility",
     ]
 
     static let dailyVariables = [
-        "weather_code", "temperature_2m_max", "temperature_2m_min",
-        "apparent_temperature_max", "apparent_temperature_min", "sunrise", "sunset",
-        "daylight_duration", "sunshine_duration", "uv_index_max",
-        "precipitation_sum", "rain_sum", "showers_sum", "snowfall_sum", "precipitation_hours",
-        "precipitation_probability_max", "wind_speed_10m_max", "wind_gusts_10m_max",
-        "wind_direction_10m_dominant"
+        "temperature_2m_max",
+        "precipitation_probability_max", "wind_speed_10m_max"
     ]
 
     static func forecast(for coordinate: Coordinate, options: ForecastOptions) -> Endpoint {
@@ -49,7 +36,6 @@ enum OpenMeteoEndpoint {
             queryItems: [
                 URLQueryItem(name: "latitude", value: String(coordinate.latitude)),
                 URLQueryItem(name: "longitude", value: String(coordinate.longitude)),
-                URLQueryItem(name: "current", value: currentVariables.joined(separator: ",")),
                 URLQueryItem(name: "hourly", value: hourlyVariables.joined(separator: ",")),
                 URLQueryItem(name: "daily", value: dailyVariables.joined(separator: ",")),
                 URLQueryItem(name: "timezone", value: "auto"),

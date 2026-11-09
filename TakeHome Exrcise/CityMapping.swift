@@ -7,6 +7,12 @@
 
 import Foundation
 
+/// Class for mapping forecast conditions to likelihoods of activities
+/// For simplicity we use following mapping
+/// `skiing` - temperature below 5 degrees and snow depth above 30 cm
+/// `surfing` - temperature above 20, wind speed above 5 km/h and precipitation probability below 20%
+/// `oudoor sightseeing` - precipitation probability below 40% and visibility above 10 km
+/// `indoor sightseeing` - directly opposite of indoor sightseeing
 class CityMapping {
     class func cityDetails(for city: City, with forecast: WeatherForecast) -> CityDetails {
         let dates = forecast.daily.map { Calendar.current.startOfDay(for: $0.date) }
@@ -32,7 +38,8 @@ class CityMapping {
                            skiingLikelihoods: skiingLikelihoods,
                            surfingLikelihoods: surfingLikelihoods,
                            outdoorSightseeingLikelihoods: outdoorSightseeingLikelihoods,
-                           indoorSightseeingLikelihoods: indoorSightseeingLikelihoods)
+                           indoorSightseeingLikelihoods: indoorSightseeingLikelihoods,
+                           dates: dates)
     }
     
     private class func hourlyConditionsByDay(hourlyConditions: [HourlyConditions]) -> [Date: [HourlyConditions]] {
