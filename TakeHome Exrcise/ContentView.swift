@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var city: City?
     var body: some View {
-        ScrollView {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        Group {
+            if let city = city {
+                CityDetailsView(city: city)
+            } else {
+                CitiesSearchView { city in
+                    self.city = city
+                }
+            }
         }
-        .padding()
     }
 }
 

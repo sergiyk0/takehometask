@@ -10,7 +10,7 @@ class UseCases {
         LoadCityDetailsUseCaseImpl()
     }
     
-    class func findCityCoordinateUseCase() -> FindCityUseCase {
+    class func findCityUseCase() -> FindCityUseCase {
         FindCityUseCaseImpl()
     }
     

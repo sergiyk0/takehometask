@@ -9,12 +9,12 @@ import SwiftUI
 
 struct CityDetailsView: View {
     @ObservedObject private var viewModel = CityDetailsViewModel()
+    let city: City
     
     var body: some View {
         Text(viewModel.cityName)
+            .onAppear {
+                viewModel.run(city)
+            }
     }
-}
-
-#Preview {
-    CityDetailsView()
 }

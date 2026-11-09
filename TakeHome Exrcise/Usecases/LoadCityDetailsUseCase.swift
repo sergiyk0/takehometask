@@ -12,7 +12,7 @@ protocol LoadCityDetailsUseCase {
 class LoadCityDetailsUseCaseImpl: LoadCityDetailsUseCase {
     func run(city: City) async throws -> CityDetails {
         let forecast = try await UseCases.getForecastUseCase().run(city)
-        
-        return CityDetails(name: "", skiingLikelihood: 0, surfingLikelihood: 0, outdoorSightseeingLikelihood: 0, indoorSightseeingLikelihood: 0)
+        let details = CityMapping.cityDetails(for: city, with: forecast)
+        return details
     }
 }
