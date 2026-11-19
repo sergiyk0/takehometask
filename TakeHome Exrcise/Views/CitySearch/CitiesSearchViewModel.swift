@@ -8,6 +8,7 @@
 import Combine
 import SwiftUI
 
+@MainActor
 class CitiesSearchViewModel: ObservableObject {
     @Published var searchResults: [City] = []
     @Published var query: String = "" {
